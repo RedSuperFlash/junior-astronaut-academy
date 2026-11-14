@@ -77,3 +77,11 @@ function point(e,p){let pos=new DOMPoint(e.clientX,e.clientY).matrixTransform(p.
 modal.addEventListener('pointerdown',e=>{let paper=e.target.closest('#paper');if(!paper||drawing)return;let d=s.drafts[attempt.k];d.lines??=[];let line=[point(e,paper)];d.lines.push(line);paper.setPointerCapture(e.pointerId);drawing={line,paper,id:e.pointerId};paper.insertAdjacentHTML('beforeend',strokes([line]))});
 modal.addEventListener('pointermove',e=>{if(!drawing||drawing.id!==e.pointerId)return;let {line,paper}=drawing,p=point(e,paper);let last=line.at(-1);if(Math.abs(p[0]-last[0])+Math.abs(p[1]-last[1])<3)return;line.push(p);paper.lastElementChild.setAttribute('points',line.join(' '))});
 for(let event of ['pointerup','pointercancel','lostpointercapture'])modal.addEventListener(event,e=>{if(drawing?.id===e.pointerId){drawing=null;save()}});
+(() => {
+  const query = new URLSearchParams(location.search);
+  if (query.get('practice') !== 'zero-g') return;
+  show('Academy practice', 'Zero-G training', '<p>Practice moving a cargo pod in microgravity. Earn career credit by completing the assessed lab during Space Station Training.</p><div id="practice-lab"></div>');
+  window.mountLab(document.querySelector('#practice-lab'), 3, () => {
+    show('Practice debrief', 'Both pods docked', '<p>You stopped each cargo pod with an impulse opposite its motion. The assessed version is available in Stage 4 of your training path.</p><div class="actions"><a href="index.html">Return to outpost command</a></div>');
+  });
+})();

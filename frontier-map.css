@@ -1,0 +1,24 @@
+.frontier-map{border-radius:10px;isolation:isolate;overflow:hidden;background:#20333a;box-shadow:inset 0 0 0 1px #85938d}
+.frontier-map-screen{width:100%;overflow-x:auto;overflow-y:hidden;scrollbar-width:thin;scrollbar-color:#b3b1a1 #314448}
+.frontier-map-world{width:100%;aspect-ratio:1000/432;position:relative;overflow:hidden;background-size:100% 100%;background-position:center;background-repeat:no-repeat;container-type:inline-size}
+.frontier-moon{background-image:url(frontier-moon.webp);background-color:#657779}
+.frontier-mars{background-image:url(frontier-mars.webp);background-color:#a36755}
+.frontier-map-shadow{position:absolute;inset:0;background:#172841;opacity:var(--surface-shadow,0);transition:opacity .8s}
+.frontier-map-drawing{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
+.frontier-map-compass{position:absolute;right:2%;top:5%;display:grid;justify-items:center;color:#f1e9d8;font:700 9px monospace;text-shadow:0 1px 3px #15252d}
+.frontier-map-compass span{font:24px/1 monospace}
+button.frontier-map-pin{position:absolute;z-index:1;transform:translate(-50%,-80%);background:transparent!important;border:0!important;border-radius:3px;padding:0!important;color:#fff8db!important;display:flex;align-items:end;justify-content:center;min-width:7%;height:16%;overflow:visible;outline-offset:3px;line-height:1;box-shadow:none}
+button.frontier-map-pin span{white-space:nowrap;display:inline-flex;align-items:center;gap:4px;font:600 clamp(9px,1.12cqw,14px)/1.1 DM,Arial,sans-serif;letter-spacing:.02em;border:1px solid #aebcb2bd;border-radius:4px;background:#263b3ee6;padding:3px 6px;box-shadow:0 1px 2px #20313250;transition:background .2s,color .2s}
+button.frontier-map-pin span:before{content:"";width:4px;height:4px;display:block;border-radius:50%;background:#b3ce98}
+button.frontier-map-pin.is-unbuilt span:before{background:#ddd6bd}
+button.frontier-map-pin.is-unbuilt span{border-style:dashed;background:#45514ae6}
+button.frontier-map-pin:hover span,button.frontier-map-pin:focus-visible span,button.frontier-map-pin[aria-pressed=true] span{background:#ffcf72;color:#243736;border-color:#ffe6a4}
+button.frontier-map-pin:focus-visible{outline:2px solid #ffd777}
+.frontier-map-picker{display:none}
+@media(max-width:680px){.frontier-map-world{min-width:600px}.frontier-map-picker{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:8px 12px;border-top:1px solid #647774;color:#e6e8db;font:600 12px DM,Arial,sans-serif}.frontier-map-picker select{min-width:0;max-width:64%;color:#ecedde;background:#24413f;border:1px solid #7a9286;border-radius:4px;padding:5px;font:inherit}}
+@media(prefers-reduced-motion:reduce){.frontier-map *{animation:none!important;transition:none!important}}
+
+@keyframes frontier-crop-settle{from{opacity:.35}to{opacity:1}}
+@keyframes frontier-beacon{0%,100%{opacity:.4}50%{opacity:1}}
+@media(prefers-reduced-motion:no-preference){.frontier-map-crop{animation:frontier-crop-settle .65s ease-out both}.frontier-map-beacon{animation:frontier-beacon 2.4s ease-in-out 2}}
+button.frontier-map-pin:active:not(:disabled){transform:translate(-50%,-80%)}.frontier-map-shadow,.frontier-map-compass{pointer-events:none}
