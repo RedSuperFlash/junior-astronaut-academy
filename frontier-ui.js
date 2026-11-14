@@ -49,7 +49,8 @@ function scientificNote(){return '<p class="muted split">Classroom simulation. S
 function stageName(p){return state.mode==='free'?'Open investigation':p.stage.title}
 function instrument(title,value,pct,color,ico){return '<div class="instrument"><span class="sig">'+symbol(ico)+'</span><div><div class="between"><b>'+title+'</b><small>'+esc(value)+'</small></div><div class="meter" aria-hidden="true"><i style="width:'+clamp(pct)+'%;--color:'+color+'"></i></div></div></div>'}
 function drawCommand(p){
- $('#world-title').innerHTML=(state.world==='moon'?'LUNAR':'MARS')+' FRONTIER<span>.</span>';
+ document.body.dataset.world=state.world;
+ $('#world-title').innerHTML=(state.world==='moon'?'Lunar':'Mars')+' Frontier<span>.</span>';
  const R=state.resources;
  $('#command').innerHTML='<div class="command-grid"><section class="window"><div class="windowhead"><span class="kicker">◉ &nbsp; Surface operations</span><span class="mono">'+esc(modeNames[state.mode])+' &nbsp; / &nbsp; SOL '+String(state.sol+(state.status==='active'?1:0)).padStart(2,'0')+'</span></div><div id="surface"></div><div class="windowfoot"><span class="mono">'+planetNames[state.world]+' research outpost</span><button data-do="facilities">Inspect installations ↗</button></div></section><aside class="telemetry"><div class="panelhead"><h2>System status</h2><span class="tag"><i class="dot"></i>'+ (state.status==='active'?'Live':'Final')+'</span></div>'+
  instrument('Life support',num(state.condition)+' / 10',10*state.condition,'#498575','life')+

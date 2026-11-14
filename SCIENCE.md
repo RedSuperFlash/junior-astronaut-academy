@@ -74,3 +74,5 @@ Each gridded cell spans roughly 7.58 km north to south. Boulders and dangerous l
 - At 0% sunlight the bench shows a 600 Wh shortfall, regardless of capacity. A panel edge-on to the beam at 90° also produces zero.
 - At 50% sunlight, 0° incidence and 0 Wh capacity, the night load falls short by 300 Wh. A 400 Wh battery at the same settings covers the full load.
 - Collecting 75% and recovering 80% of 12 L returns 7.2 L. The tank needs 4.8 L of replacement. Ideal collection and recovery of 100% each returns all 12 L.
+
+The decorative lunar globe in the interface uses a color-graded rendering of the [NASA Scientific Visualization Studio CGI Moon Kit](https://svs.gsfc.nasa.gov/4720/), with the LRO/LROC color map. The lighting, colors and stars are artistic choices.
